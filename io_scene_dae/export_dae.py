@@ -667,11 +667,11 @@ class DaeExporter:
                     {"WARNING"},
                     "CalcTangets failed for mesh \"{}\", no tangets will be "
                     "exported.".format(mesh.name))
-                mesh.calc_normals_split()
+                # mesh.calc_normals_split() # deprecated & removed in Blender 4.0+
                 has_tangents = False
 
         else:
-            mesh.calc_normals_split()
+            # mesh.calc_normals_split() # deprecated & removed in Blender 4.0+
             has_tangents = False
 
         for fi in range(len(mesh.polygons)):
