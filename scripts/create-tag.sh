@@ -58,7 +58,33 @@ else
     fi
 fi
 
-echo "Attempting to update __init__.py to reflect the new version."
+check_init_file() {
+    local init_files
+    init_files=$(find . -name "__init__.py")
+
+    local file_count
+    file_count=$(echo "$init_files" | wc -l)
+
+    if [ "$file_count" -eq 0 ]; then
+        echo "Error: No __init__.py file found!" >&2
+        return 1
+    elif [ "$file_count" -gt 1 ]; then
+        echo "Error: Multiple __init__.py files found!" >&2
+        echo "$init_files" >&2
+        return 1
+    else
+        echo "$init_files"
+        return 0
+    fi
+}
+
+init_file=$(check_init_file)
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+echo "Attempting to update $init_file to reflect the new version."
 read -p "Do you want to commit this change? [y/n]: " answer
 
 if [ "${answer,,}" != "y" ]; then
@@ -71,9 +97,9 @@ if ! git pull --rebase; then
     exit 1
 fi
 
-sed -i "s/\"version\": ([0-9]\+, [0-9]\+, [0-9]\+)/\"version\": ($v_major, $v_minor, $v_patch)/g" __init__.py
-git add __init__.py
-git commit -m "Update version in __init__.py to $version"
+sed -i "s/\"version\": ([0-9]\+, [0-9]\+, [0-9]\+)/\"version\": ($v_major, $v_minor, $v_patch)/g" "$init_file"
+git add "$init_file"
+git commit -m "Update version in $init_file to $version"
 git push
 echo "Version change to __init__.py committed successfully."
 
