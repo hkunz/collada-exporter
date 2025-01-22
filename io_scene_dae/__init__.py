@@ -21,16 +21,17 @@ from bpy.props import StringProperty, BoolProperty, FloatProperty, EnumProperty
 from bpy_extras.io_utils import ExportHelper
 bl_info = {
     "name": "Better Collada Exporter",
-    "author": "Juan Linietsky, artell, Panthavma",
-    "version": (1, 10, 12),
+    "author": "Juan Linietsky, artell, Panthavma, Harry McKenzie",
+    "version": (1, 10, 11),
     "blender": (3, 0, 1),
     "api": 38691,
     "location": "File > Import-Export",
     "description": ("Export DAE Scenes. This plugin actually works better! "
+                    "Fixed Blender 4.0+ compatibility by removing deprecated method calls. "
                     "Otherwise contact the Godot Engine community."),
     "warning": "",
     "wiki_url": ("https://godotengine.org"),
-    "tracker_url": "https://github.com/godotengine/collada-exporter",
+    "tracker_url": "https://github.com/hkunz/collada-exporter",
     "support": "OFFICIAL",
     "category": "Import-Export"}
 
