@@ -9,14 +9,14 @@ format viable for importing meshes into game engines such as
 1. Copy the `io_scene_dae` directory the location where Blender stores the
    scripts/addons folder on your system (you should see other io_scene_*
    folders there from other addons). Copy the entire dir and not just its
-   contents.
+   contents. Or simply [download the zip](https://github.com/hkunz/collada-exporter/releases) and install addon under *Edit > Preferences > Add-ons*
 2. Go to the Blender settings and enable the "Better Collada Exporter" plugin.
 3. Enjoy full-featured Collada export.
 4. (optional) Copy the `godot_export_manager.py` script to the scripts/addons folder.
 5. (optional) Enable the "Godot Export Manager" plugin.
 
 If you find bugs or want to suggest improvements, please open an issue on the
-upstream [GitHub repository](https://github.com/godotengine/collada-exporter).
+upstream [GitHub repository](https://github.com/hkunz/collada-exporter).
 
 ## License
 
