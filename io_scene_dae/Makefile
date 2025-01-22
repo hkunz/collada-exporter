@@ -3,7 +3,6 @@
 all: \
 	clean
 
-
 zip:
 	../scripts/build-zip.sh
 

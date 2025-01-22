@@ -1,12 +1,14 @@
 .PHONY: all clean documentation
 
+version ?= -i
+
 all: \
 	clean
 
 create-next-tag:
 	@echo "=====================================================================================>"
 	@echo "Create new tag ..."
-	./scripts/create-tag.sh -i
+	./scripts/create-tag.sh $(version)
 
 zip:
 	$(MAKE) -C io_scene_dae zip

@@ -10,7 +10,8 @@ while [[ $# -gt 0 ]]; do
             increment=true
             shift
             ;;
-        *)
+        * )
+            version="$1"
             shift
             ;;
     esac
@@ -18,7 +19,6 @@ done
 
 # If increment is specified, increment the patch version
 if [ "$increment" = true ]; then
-
     version=$(git tag -l --sort=-v:refname | head -n 1 | sed 's/^v//')
     if [ -z "$version" ]; then
         v_major=0
@@ -37,8 +37,8 @@ if [ "$increment" = true ]; then
     fi
 else
     # Check if the correct number of arguments is provided
-    if [ "$num_args" -ne 1 ]; then
-        echo "Usage: $0 <version>"
+    if [ -z "$version" ]; then
+        echo "Usage: $0 <version> or $0 --increment for auto-increment"
         exit 1
     fi
 
