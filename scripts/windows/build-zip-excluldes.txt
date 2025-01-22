@@ -1,0 +1,11 @@
+__pycache__
+.vscode
+.git
+.gitignore
+scripts
+documentation
+temp
+useful
+*.template.*
+*TODO*
+Makefile
