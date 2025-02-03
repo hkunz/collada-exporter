@@ -184,7 +184,7 @@ class DaeExporter:
 
                 if not os.path.isfile(dstfile):
                     shutil.copy(imgpath, dstfile)
-                imgpath = os.path.join("images", os.path.basename(imgpath))
+                imgpath = os.path.join("images", os.path.basename(imgpath)).replace("\\", "/")
             else:
                 img_tmp_path = image.filepath
                 if img_tmp_path.lower().endswith(
@@ -201,7 +201,7 @@ class DaeExporter:
                 if not os.path.isfile(dstfile):
                     image.save()
                 imgpath = os.path.join(
-                    "images", os.path.basename(image.filepath))
+                    "images", os.path.basename(image.filepath)).replace("\\", "/")
                 image.filepath = img_tmp_path
 
         
