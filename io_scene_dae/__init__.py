@@ -69,12 +69,12 @@ class CE_OT_export_dae(bpy.types.Operator, ExportHelper):
         name="Selected Objects",
         description="Export only selected objects (and visible in active "
                     "layers if that applies).",
-        default=False,
+        default=True,
         )
     use_mesh_modifiers : BoolProperty(
         name="Apply Modifiers",
         description="Apply modifiers to mesh objects (on a copy!).",
-        default=False,
+        default=True,
         )
     use_exclude_armature_modifier : BoolProperty(
         name="Exclude Armature Modifier",
@@ -91,13 +91,13 @@ class CE_OT_export_dae(bpy.types.Operator, ExportHelper):
     use_triangles : BoolProperty(
         name="Triangulate",
         description="Export Triangles instead of Polygons.",
-        default=False,
+        default=True,
         )
 
     use_copy_images : BoolProperty(
         name="Copy Images",
         description="Copy Images (create images/ subfolder)",
-        default=False,
+        default=True,
         )
     use_active_layers : BoolProperty(
         name="Active Layers",
@@ -113,7 +113,7 @@ class CE_OT_export_dae(bpy.types.Operator, ExportHelper):
     use_anim : BoolProperty(
         name="Export Animation",
         description="Export keyframe animation",
-        default=False,
+        default=True,
         )
     use_anim_action_all : BoolProperty(
         name="All Actions",
@@ -130,7 +130,7 @@ class CE_OT_export_dae(bpy.types.Operator, ExportHelper):
     use_anim_optimize : BoolProperty(
         name="Optimize Keyframes",
         description="Remove double keyframes",
-        default=True,
+        default=False,
         )
 
     use_shape_key_export : BoolProperty(
