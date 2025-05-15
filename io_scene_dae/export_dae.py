@@ -610,14 +610,19 @@ class DaeExporter:
             for arm in bpy.data.armatures:
                 arm.pose_position = "REST"
 
-        apply_modifiers = len(node.modifiers) and self.config[
-            "use_mesh_modifiers"]
+        apply_modifiers = len(node.modifiers) and self.config["use_mesh_modifiers"]
 
         name_to_use = mesh.name
         if (custom_name is not None and custom_name != ""):
             name_to_use = custom_name
 
-        mesh = node.to_mesh(preserve_all_data_layers=False, depsgraph=bpy.context.evaluated_depsgraph_get()) 
+        depsgraph = bpy.context.evaluated_depsgraph_get()
+        # mesh = node.to_mesh(preserve_all_data_layers=False, depsgraph=bpy.context.evaluated_depsgraph_get())
+        if apply_modifiers:
+            evaluated_node = node.evaluated_get(depsgraph)
+            mesh = evaluated_node.to_mesh(preserve_all_data_layers=False, depsgraph=depsgraph)
+        else:
+            mesh = node.to_mesh(preserve_all_data_layers=True, depsgraph=depsgraph) 
         # 2.8 update: warning, Blender does not support anymore the "RENDER" argument to apply modifier
         # with render state, only current state
         
