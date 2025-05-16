@@ -20,3 +20,4 @@ clean:
 	@echo "=====================================================================================>"
 	@echo "Cleaning ..."
 	find . -type d -name '__pycache__' -exec rm -r {} +
+	git ls-files -z | xargs -0 dos2unix
