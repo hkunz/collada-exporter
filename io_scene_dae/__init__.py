@@ -22,7 +22,7 @@ from bpy_extras.io_utils import ExportHelper
 bl_info = {
     "name": "Better Collada Exporter",
     "author": "Juan Linietsky, artell, Panthavma, Harry McKenzie",
-    "version": (1, 10, 12),
+    "version": (1, 10, 13),
     "blender": (3, 0, 1),
     "api": 38691,
     "location": "File > Import-Export",
